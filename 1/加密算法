@@ -1,0 +1,15 @@
+格式为“用户名:密码哈希”
+
+https://33tool.com/bcrypt/
+​​哈希算法​​：password_hash($password, PASSWORD_DEFAULT)
+默认情况下使用bcrypt算法
+生成的哈希值以$2y$开头（标识使用bcrypt算法）
+默认cost参数是10（可调整，范围4-31，越高越安全但越慢）
+​​用户账户文件​​：
+存储在/1/user_accounts.txt
+格式：用户名:哈希值
+示例：admin:$2y$10$X7t3d4qM7s4eXoG2eR4d8.Sz9bL2s3dK8j6G3h9JkL1oP9qW0rT4y
+​​密码验证​​：
+使用password_verify($password, $storedHash)函数
+自动从哈希值中提取盐值和成本参数
+防止时序攻击(timing attacks)
